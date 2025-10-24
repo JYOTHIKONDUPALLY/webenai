@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Panel</title>
+
+  <!-- Font Awesome CDN for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+    }
+
+    .task-card {
+      width: 340px;
+      background-color: #0f0f0f;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #4c007d;
+      box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      justify-content: space-between;
+      background-color: #1a1a1a;
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    .tab {
+      flex: 1;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.9rem;
+      color: #ccc;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .tab.active {
+      color: #a855f7;
+      font-weight: 600;
+      border-bottom: 2px solid #a855f7;
+    }
+
+    /* Task list container */
+    .task-list {
+      height: 260px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .tasks {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      animation: scrollUp 14s linear infinite;
+    }
+
+    @keyframes scrollUp {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+
+    /* Task Item */
+    .task {
+      background-color: #141414;
+      border-radius: 12px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #242424;
+      box-shadow: 0 0 8px rgba(128, 0, 255, 0.15);
+    }
+
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .task-icon {
+      width: 35px;
+      height: 35px;
+      border-radius: 10px;
+      background-color: #1f1f1f;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #a855f7;
+      font-size: 1rem;
+    }
+
+    .task-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .task-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .task-sub {
+      font-size: 0.75rem;
+      color: #aaa;
+    }
+
+    .right-icon {
+      color: #a855f7;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .scroll-handle {
+      position: absolute;
+      right: -4px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 40px;
+      border-radius: 4px;
+      background: #a855f7;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="task-card">
+    <div class="tabs">
+      <div class="tab active">All Tasks</div>
+      <div class="tab">Waiting for approval</div>
+    </div>
+
+    <div class="task-list">
+      <div class="tasks">
+        <div class="task">
+          <div class="left">
+            <div class="task-icon"><i class="fa-solid fa-sack-dollar"></i></div>
+            <div class="task-info">
+              <div class="task-title">Payroll management</div>
+              <div class="task-sub">Due on 2nd July</div>
+            </div>
+          </div>
+          <div class="right-icon"><i class="fa-regular fa-clock"></i></div>
+        </div>
+
+        <div class="task">
+          <div class="left">
+            <div class="task-icon"><i class="fa-regular fa-user"></i></div>
+            <div class="task-info">
+              <div class="task-title">Employee Tracking</div>
+              <div class="task-sub">2 days ago</div>
+            </div>
+          </div>
+          <div class="right-icon"><i class="fa-solid fa-check"></i></div>
+        </div>
+
+        <div class="task">
+          <div class="left">
+            <div class="task-icon"><i class="fa-regular fa-calendar-days"></i></div>
+            <div class="task-info">
+              <div class="task-title">Social media post</div>
+              <div class="task-sub">Cancelled by user</div>
+            </div>
+          </div>
+          <div class="right-icon"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+
+        <div class="task">
+          <div class="left">
+            <div class="task-icon"><i class="fa-solid fa-list"></i></div>
+            <div class="task-info">
+              <div class="task-title">Lead list</div>
+              <div class="task-sub">70% prepared</div>
+            </div>
+          </div>
+          <div class="right-icon"><i class="fa-solid fa-gear"></i></div>
+        </div>
+
+        <!-- Duplicates for continuous scroll -->
+        <div class="task">
+          <div class="left">
+            <div class="task-icon"><i class="fa-solid fa-sack-dollar"></i></div>
+            <div class="task-info">
+              <div class="task-title">Payroll management</div>
+              <div class="task-sub">Due on 2nd July</div>
+            </div>
+          </div>
+          <div class="right-icon"><i class="fa-regular fa-clock"></i></div>
+        </div>
+
+        <div class="task">
+          <div class="left">
+            <div class="task-icon"><i class="fa-regular fa-user"></i></div>
+            <div class="task-info">
+              <div class="task-title">Employee Tracking</div>
+              <div class="task-sub">2 days ago</div>
+            </div>
+          </div>
+          <div class="right-icon"><i class="fa-solid fa-check"></i></div>
+        </div>
+      </div>
+
+      <div class="scroll-handle"></div>
+    </div>
+  </div>
+
+</body>
+</html>
