@@ -324,7 +324,7 @@
         /* Process Section */
         .process-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
             margin-top: 4rem;
         }
@@ -333,74 +333,488 @@
             background: linear-gradient(135deg, rgba(124, 58, 237, 0.05), rgba(0, 0, 0, 0.5));
             border: 1px solid rgba(124, 58, 237, 0.2);
             border-radius: 16px;
-            padding: 2.5rem;
+            padding: 3rem;
             transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
         }
 
         .process-card:hover {
             transform: translateY(-10px);
             border-color: rgba(124, 58, 237, 0.4);
+            box-shadow: 0 10px 40px rgba(124, 58, 237, 0.2);
+        }
+
+        .process-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .process-number {
+            padding: 0.4rem 0.8rem;
+            background: rgba(124, 58, 237, 0.2);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #a78bfa;
+        }
+
+        .process-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .process-card>p {
+            color: #9ca3af;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .process-visual {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: auto;
+        }
+
+        .process-animation {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Radar Animation */
+        .radar-container {
+            width: 120px;
+            height: 120px;
+            position: relative;
+        }
+
+        .radar-circle {
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(124, 58, 237, 0.3);
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .radar-circle:nth-child(2) {
+            width: 70%;
+            height: 70%;
+            top: 15%;
+            left: 15%;
+        }
+
+        .radar-circle:nth-child(3) {
+            width: 40%;
+            height: 40%;
+            top: 30%;
+            left: 30%;
+        }
+
+        .radar-sweep {
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #7c3aed);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform-origin: 0 50%;
+            animation: radarSweep 3s linear infinite;
+        }
+
+        @keyframes radarSweep {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .radar-dot {
+            width: 8px;
+            height: 8px;
+            background: #7c3aed;
+            border-radius: 50%;
+            position: absolute;
+            animation: radarPulse 2s ease-in-out infinite;
+        }
+
+        .radar-dot:nth-child(4) {
+            top: 20%;
+            left: 30%;
+            animation-delay: 0s;
+        }
+
+        .radar-dot:nth-child(5) {
+            top: 60%;
+            left: 70%;
+            animation-delay: 0.5s;
+        }
+
+        .radar-dot:nth-child(6) {
+            top: 40%;
+            left: 60%;
+            animation-delay: 1s;
+        }
+
+        @keyframes radarPulse {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+        /* Code Lines Animation */
+        .code-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            justify-content: center;
+        }
+
+        .code-line {
+            height: 8px;
+            background: rgba(124, 58, 237, 0.3);
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .code-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, #7c3aed, transparent);
+            animation: codeLine 2s ease-in-out infinite;
+        }
+
+        .code-line:nth-child(1) {
+            width: 80%;
+            animation-delay: 0s;
+        }
+
+        .code-line:nth-child(2) {
+            width: 60%;
+            animation-delay: 0.3s;
+        }
+
+        .code-line:nth-child(3) {
+            width: 90%;
+            animation-delay: 0.6s;
+        }
+
+        .code-line:nth-child(4) {
+            width: 70%;
+            animation-delay: 0.9s;
+        }
+
+        .code-line:nth-child(5) {
+            width: 85%;
+            animation-delay: 1.2s;
+        }
+
+        .code-line:nth-child(1)::before {
+            animation-delay: 0s;
+        }
+
+        .code-line:nth-child(2)::before {
+            animation-delay: 0.3s;
+        }
+
+        .code-line:nth-child(3)::before {
+            animation-delay: 0.6s;
+        }
+
+        .code-line:nth-child(4)::before {
+            animation-delay: 0.9s;
+        }
+
+        .code-line:nth-child(5)::before {
+            animation-delay: 1.2s;
+        }
+
+        @keyframes codeLine {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Integration Icons Animation */
+        .integration-container {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .integration-icon {
             width: 50px;
             height: 50px;
             background: rgba(124, 58, 237, 0.2);
-            border-radius: 12px;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
+            color: #7c3aed;
+            animation: integrationFloat 3s ease-in-out infinite;
+        }
+
+        .integration-icon:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .integration-icon:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .integration-icon:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .integration-icon:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .integration-icon:nth-child(5) {
+            animation-delay: 0.8s;
+        }
+
+        .integration-icon:nth-child(6) {
+            animation-delay: 1.3s;
+        }
+
+        @keyframes integrationFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Support Animation */
+        .support-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .support-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(124, 58, 237, 0.2);
+            border: 2px solid #7c3aed;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #7c3aed;
+            position: relative;
+            z-index: 2;
+        }
+
+        .support-ring {
+            width: 100px;
+            height: 100px;
+            border: 2px solid rgba(124, 58, 237, 0.3);
+            border-radius: 50%;
+            position: absolute;
+            animation: supportRing 2s ease-in-out infinite;
+        }
+
+        .support-ring:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .support-ring:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        @keyframes supportRing {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        /* Scale Animation */
+        .scale-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .scale-bar {
+            width: 20px;
+            background: linear-gradient(180deg, #7c3aed, rgba(124, 58, 237, 0.3));
+            border-radius: 4px 4px 0 0;
+            animation: scaleBar 2s ease-in-out infinite;
+        }
+
+        .scale-bar:nth-child(1) {
+            height: 40%;
+            animation-delay: 0s;
+        }
+
+        .scale-bar:nth-child(2) {
+            height: 70%;
+            animation-delay: 0.2s;
+        }
+
+        .scale-bar:nth-child(3) {
+            height: 50%;
+            animation-delay: 0.4s;
+        }
+
+        .scale-bar:nth-child(4) {
+            height: 90%;
+            animation-delay: 0.6s;
+        }
+
+        .scale-bar:nth-child(5) {
+            height: 60%;
+            animation-delay: 0.8s;
+        }
+
+        .scale-bar:nth-child(6) {
+            height: 80%;
+            animation-delay: 1s;
+        }
+
+        @keyframes scaleBar {
+
+            0%,
+            100% {
+                transform: scaleY(1);
+            }
+
+            50% {
+                transform: scaleY(1.3);
+            }
+        }
+
+        /* Optimization Animation */
+        .optimization-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .optimization-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem;
+            background: rgba(124, 58, 237, 0.1);
+            border-radius: 8px;
+            border-left: 3px solid #7c3aed;
+        }
+
+        .optimization-icon {
+            width: 30px;
+            height: 30px;
+            background: rgba(124, 58, 237, 0.3);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
             color: #7c3aed;
         }
 
-        .process-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+        .optimization-progress {
+            flex: 1;
+            height: 6px;
+            background: rgba(124, 58, 237, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
         }
 
-        .process-card p {
-            color: #9ca3af;
-            line-height: 1.7;
+        .optimization-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #7c3aed, #a78bfa);
+            border-radius: 3px;
+            animation: optimizationProgress 3s ease-in-out infinite;
         }
 
-        /* Benefits Grid */
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 4rem;
+        .optimization-item:nth-child(1) .optimization-bar {
+            animation-delay: 0s;
+            width: 75%;
         }
 
-        .benefit-card {
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.05), transparent);
-            border: 1px solid rgba(124, 58, 237, 0.2);
-            border-radius: 16px;
-            padding: 2.5rem;
-            transition: all 0.3s;
+        .optimization-item:nth-child(2) .optimization-bar {
+            animation-delay: 0.5s;
+            width: 90%;
         }
 
-        .benefit-card:hover {
-            transform: translateY(-5px);
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), transparent);
+        .optimization-item:nth-child(3) .optimization-bar {
+            animation-delay: 1s;
+            width: 60%;
         }
 
-        .benefit-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: #7c3aed;
-        }
+        @keyframes optimizationProgress {
 
-        .benefit-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
+            0%,
+            100% {
+                transform: translateX(-100%);
+            }
 
-        .benefit-card p {
-            color: #9ca3af;
-            line-height: 1.7;
+            50%,
+            75% {
+                transform: translateX(0);
+            }
         }
 
         /* Pricing Section */
@@ -678,7 +1092,7 @@
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
-             border-top: 1px solid rgba(124, 58, 237, 0.2);
+            border-top: 1px solid rgba(124, 58, 237, 0.2);
             color: #6b7280;
             font-size: 0.9rem;
         }
@@ -688,6 +1102,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -696,33 +1111,199 @@
 
         /* Responsive */
         @media (max-width: 968px) {
-            .hero h1 { font-size: 2.5rem; }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
             .feature-grid,
-            .feature-large { grid-template-columns: 1fr; }
+            .feature-large {
+                grid-template-columns: 1fr;
+            }
+
             .process-grid,
             .benefits-grid,
-            .pricing-grid { grid-template-columns: 1fr; }
-            .testimonial-grid { grid-template-columns: 1fr; }
-            .footer-content { grid-template-columns: 1fr; }
-            .nav-links { display: none; }
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
         }
-        .pill{
+
+        .pill {
             /* width: 30px;
             height: 50px; */
             border-radius: 10%;
             padding: 5px 7px;
             background-color: #7c3aed;
         }
-       
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .feature-grid,
+            .feature-large {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+
+            .feature-large {
+                gap: 2rem;
+            }
+
+            .feature-text h3 {
+                font-size: 1.5rem;
+            }
+
+            .feature-text p {
+                font-size: 1rem;
+            }
+
+            .feature-visual {
+                height: 300px;
+                min-height: 300px;
+                padding: 1rem;
+                order: -1;
+            }
+
+            .feature-visual iframe {
+                width: 100%;
+                height: 100%;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .process-card {
+                padding: 2rem;
+            }
+
+            .process-visual {
+                height: 180px;
+            }
+
+            .benefits-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .section-header p {
+                font-size: 1rem;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .cta-section p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .feature-large {
+                padding: 1.5rem;
+            }
+
+            .feature-text h3 {
+                font-size: 1.3rem;
+            }
+
+            .feature-visual {
+                height: 250px;
+                min-height: 250px;
+                padding: 0.5rem;
+            }
+
+            .process-card {
+                padding: 1.5rem;
+            }
+
+            .process-card h3 {
+                font-size: 1.4rem;
+            }
+
+            .process-visual {
+                height: 160px;
+                padding: 1rem;
+            }
+
+            .integration-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .btn {
+                padding: 0.9rem 1.5rem;
+                font-size: 0.95rem;
+            }
+
+            .benefit-card,
+            .testimonial-card {
+                padding: 1.5rem;
+            }
+
+            .pricing-card {
+                padding: 2rem 1.5rem;
+            }
+        }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <div style="display: flex;justify-content: space-around;align-items: center;">
-            <img src="./webenai Logo (3).png" width="50px" height="50px">
-            <div class="logo">WebenAI</div></div>
+                <img src="./webenai Logo (3).png" width="50px" height="50px">
+                <div class="logo">WebenAI</div>
+            </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#solutions">Solutions</a></li>
@@ -738,7 +1319,8 @@
         <div class="hero-content">
             <div class="hero-badge"><span class="pill">New</span> Powered by Advanced AI Technology</div>
             <h1>Intelligent Automation for Modern Businesses.</h1>
-            <p>Transform your operations with cutting-edge web development, mobile apps, and AI solutions that drive real results and accelerate growth.</p>
+            <p>Transform your operations with cutting-edge web development, mobile apps, and AI solutions that drive
+                real results and accelerate growth.</p>
             <div class="hero-buttons">
                 <a href="#contact" class="btn btn-primary">Start Your Project</a>
                 <a href="#solutions" class="btn btn-secondary">Explore Solutions</a>
@@ -760,14 +1342,16 @@
         <div class="section-header">
             <div class="section-badge">Solutions</div>
             <h2>AI Solutions That Take Your Business to the Next Level</h2>
-            <p>Comprehensive technology solutions designed to automate, optimize, and scale your business operations efficiently.</p>
+            <p>Comprehensive technology solutions designed to automate, optimize, and scale your business operations
+                efficiently.</p>
         </div>
 
         <div class="feature-grid">
             <div class="feature-large">
                 <div class="feature-text">
                     <h3>Delegate Daily Tasks</h3>
-                    <p>From managing calendars to drafting emails and summarizing meetings, our AI assistants work around the clock to keep your business running smarter and faster.</p>
+                    <p>From managing calendars to drafting emails and summarizing meetings, our AI assistants work
+                        around the clock to keep your business running smarter and faster.</p>
                     <div class="feature-list">
                         <div class="feature-item">
                             <i class="fas fa-check-circle"></i>
@@ -788,17 +1372,19 @@
                     </div>
                 </div>
                 <div class="feature-visual">
-                    <iframe src="./featureimage.html"  frameborder="0" allowfullscreen height="360"></iframe>
+                    <iframe src="./featureimage.html" frameborder="0" allowfullscreen height="360"></iframe>
                 </div>
             </div>
 
             <div class="feature-large">
                 <div class="feature-visual">
-                     <iframe src="./featureimage-2.html" height="400" frameborder="0" allowfullscreen scrolling="no"></iframe>
+                    <iframe src="./featureimage-2.html" height="400" frameborder="0" allowfullscreen
+                        scrolling="no"></iframe>
                 </div>
                 <div class="feature-text">
                     <h3>Accelerate Sales Growth</h3>
-                    <p>AI tools for lead generation, personalized outreach, and automated content creation that scales your sales efforts and builds stronger brand presence.</p>
+                    <p>AI tools for lead generation, personalized outreach, and automated content creation that scales
+                        your sales efforts and builds stronger brand presence.</p>
                     <div class="feature-list">
                         <div class="feature-item">
                             <i class="fas fa-check-circle"></i>
@@ -823,7 +1409,8 @@
             <div class="feature-large">
                 <div class="feature-text">
                     <h3>Build Smarter Systems</h3>
-                    <p>Whether you're starting from scratch or enhancing an existing system, we offer strategic consulting and develop custom AI projects aligned with your unique goals.</p>
+                    <p>Whether you're starting from scratch or enhancing an existing system, we offer strategic
+                        consulting and develop custom AI projects aligned with your unique goals.</p>
                     <div class="feature-list">
                         <div class="feature-item">
                             <i class="fas fa-check-circle"></i>
@@ -844,7 +1431,8 @@
                     </div>
                 </div>
                 <div class="feature-visual">
-                     <iframe src="./featureimage-3.html" height="330" frameborder="0" allowfullscreen scrolling="no"></iframe>
+                    <iframe src="./featureimage-3.html" height="330" frameborder="0" allowfullscreen
+                        scrolling="no"></iframe>
                 </div>
             </div>
         </div>
@@ -860,40 +1448,140 @@
 
         <div class="process-grid">
             <div class="process-card">
-                <div class="process-number">01</div>
-                <h3>Discovery</h3>
-                <p>We dive deep into understanding your business, challenges, and goals to create a tailored strategy that drives results.</p>
+                <div class="process-header">
+                    <div class="process-number">Step 1</div>
+                </div>
+                <h3>Smart Analyzing</h3>
+                <p>We assess your needs and identify AI solutions to streamline workflows and improve efficiency.</p>
+                <div class="process-visual">
+                    <div class="process-animation">
+                        <div class="radar-container">
+                            <div class="radar-circle"></div>
+                            <div class="radar-circle"></div>
+                            <div class="radar-circle"></div>
+                            <div class="radar-sweep"></div>
+                            <div class="radar-dot"></div>
+                            <div class="radar-dot"></div>
+                            <div class="radar-dot"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process-card">
+                <div class="process-header">
+                    <div class="process-number">Step 2</div>
+                </div>
+                <h3>AI Development</h3>
+                <p>Our team builds intelligent automation systems tailored to your business processes.</p>
+                <div class="process-visual">
+                    <div class="process-animation">
+                        <div class="code-container">
+                            <div class="code-line"></div>
+                            <div class="code-line"></div>
+                            <div class="code-line"></div>
+                            <div class="code-line"></div>
+                            <div class="code-line"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process-card">
+                <div class="process-header">
+                    <div class="process-number">Step 3</div>
+                </div>
+                <h3>Seamless Integration</h3>
+                <p>We smoothly integrate AI solutions into your existing infrastructure with minimal disruption.</p>
+                <div class="process-visual">
+                    <div class="process-animation">
+                        <div class="integration-container">
+                            <div class="integration-icon"><i class="fab fa-github"></i></div>
+                            <div class="integration-icon"><i class="fab fa-jira"></i></div>
+                            <div class="integration-icon"><i class="fab fa-slack"></i></div>
+                            <div class="integration-icon"><i class="fab fa-aws"></i></div>
+                            <div class="integration-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                            <div class="integration-icon"><i class="fas fa-database"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process-card">
+                <div class="process-header">
+                    <div class="process-number">Step 4</div>
+                </div>
+                <h3>Continuous Optimization</h3>
+                <p>We refine performance, analyze insights, and enhance automation for long-term growth.</p>
+                <div class="process-visual">
+                    <div class="process-animation">
+                        <div class="optimization-container">
+                            <div class="optimization-item">
+                                <div class="optimization-icon"><i class="fas fa-laptop"></i></div>
+                                <div class="optimization-progress">
+                                    <div class="optimization-bar"></div>
+                                </div>
+                            </div>
+                            <div class="optimization-item">
+                                <div class="optimization-icon"><i class="fas fa-cog"></i></div>
+                                <div class="optimization-progress">
+                                    <div class="optimization-bar"></div>
+                                </div>
+                            </div>
+                            <div class="optimization-item">
+                                <div class="optimization-icon"><i class="fas fa-rocket"></i></div>
+                                <div class="optimization-progress">
+                                    <div class="optimization-bar"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="process-card">
-                <div class="process-number">02</div>
-                <h3>Development</h3>
-                <p>Our expert team builds your solution using cutting-edge technologies and best practices for optimal performance.</p>
-            </div>
-            <div class="process-card">
-                <div class="process-number">03</div>
-                <h3>Deployment</h3>
-                <p>Seamless launch with comprehensive testing, training, and support to ensure smooth operations from day one.</p>
-            </div>
-            <div class="process-card">
-                <div class="process-number">04</div>
-                <h3>Optimization</h3>
-                <p>Continuous monitoring and improvements based on real-world data to maximize ROI and user satisfaction.</p>
-            </div>
-            <div class="process-card">
-                <div class="process-number">05</div>
+                <div class="process-header">
+                    <div class="process-number">Step 5</div>
+                </div>
                 <h3>Scale</h3>
-                <p>As your business grows, we ensure your technology infrastructure scales efficiently to meet increasing demands.</p>
+                <p>As your business grows, we ensure your technology infrastructure scales efficiently to meet
+                    increasing demands.</p>
+                <div class="process-visual">
+                    <div class="process-animation">
+                        <div class="scale-container">
+                            <div class="scale-bar"></div>
+                            <div class="scale-bar"></div>
+                            <div class="scale-bar"></div>
+                            <div class="scale-bar"></div>
+                            <div class="scale-bar"></div>
+                            <div class="scale-bar"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
             <div class="process-card">
-                <div class="process-number">06</div>
-                <h3>Support</h3>
-                <p>Ongoing maintenance, updates, and 24/7 support to keep your systems running smoothly and securely.</p>
+                <div class="process-header">
+                    <div class="process-number">Step 6</div>
+                </div>
+                <h3>24/7 Support</h3>
+                <p>Ongoing maintenance, updates, and round-the-clock support to keep your systems running smoothly and
+                    securely.</p>
+                <div class="process-visual">
+                    <div class="process-animation">
+                        <div class="support-container">
+                            <div class="support-ring"></div>
+                            <div class="support-ring"></div>
+                            <div class="support-ring"></div>
+                            <div class="support-icon"><i class="fas fa-headset"></i></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Benefits Section -->
-    <section>
+    <!-- <section>
         <div class="section-header">
             <div class="section-badge">Benefits</div>
             <h2>The Key Benefits of AI for Your Business Growth</h2>
@@ -914,337 +1602,371 @@
             <div class="benefit-card">
                 <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
                 <h3>24/7 Availability</h3>
-                <p>AI-powered systems operate around the clock, ensuring seamless support and execution without downtime.</p>
+                <p>Provide round-the-clock service with AI-powered automation that never sleeps, ensuring customer satisfaction anytime.</p>
             </div>
             <div class="benefit-card">
-                <div class="benefit-icon"><i class="fas fa-handshake"></i></div>
-                <h3>Cost Savings</h3>
-                <p>Reduce operational expenses by automating tasks and optimizing processes, resulting in cost savings and increased ROI.</p>
+                <div class="benefit-icon"><i class="fas fa-dollar-sign"></i></div>
+                <h3>Cost Reduction</h3>
+                <p>Reduce operational costs by up to 40% through intelligent automation and optimized resource allocation.</p>
             </div>
             <div class="benefit-card">
-                <div class="benefit-icon"><i class="fas fa-tachometer-alt"></i></div>
+                <div class="benefit-icon"><i class="fas fa-lightbulb"></i></div>
                 <h3>Data-Driven Insights</h3>
-                <p>Leverage AI to analyze vast data sets, identify trends, and make smarter, faster, and more accurate business decisions.</p>
-                </div>  
+                <p>Make informed decisions with powerful analytics and predictive insights derived from your business data.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-expand-arrows-alt"></i></div>
+                <h3>Scalability & Growth</h3>
+                <p>Scale your operations seamlessly as your business grows without proportional increases in costs or complexity.</p>
+            </div>
+        </div>
+    </section> -->
+
+        <!-- Pricing Section -->
+        <section id="pricing">
+            <div class="section-header">
+                <div class="section-badge">Pricing</div>
+                <h2>The Best AI Automation, at the Right Price</h2>
+                <p>Flexible plans designed to grow with your business needs and budget.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="pricing-price">$2,999<span>/project</span></div>
+                    <p style="color: #9ca3af; margin-bottom: 2rem;">Perfect for small businesses getting started with
+                        digital transformation.</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Responsive Website</li>
+                        <li><i class="fas fa-check"></i> Basic AI Integration</li>
+                        <li><i class="fas fa-check"></i> Cloud Hosting Setup</li>
+                        <li><i class="fas fa-check"></i> 3 Months Support</li>
+                        <li><i class="fas fa-check"></i> Analytics Dashboard</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary"
+                        style="width: 100%; text-align: center; margin-top: 2rem;">Get Started</a>
                 </div>
 
-    <!-- Pricing Section -->
-    <section id="pricing">
-        <div class="section-header">
-            <div class="section-badge">Pricing</div>
-            <h2>The Best AI Automation, at the Right Price</h2>
-            <p>Flexible plans designed to grow with your business needs and budget.</p>
-        </div>
-
-        <div class="pricing-grid">
-            <div class="pricing-card">
-                <h3>Starter</h3>
-                <div class="pricing-price">$2,999<span>/project</span></div>
-                <p style="color: #9ca3af; margin-bottom: 2rem;">Perfect for small businesses getting started with digital transformation.</p>
-                <ul class="pricing-features">
-                    <li><i class="fas fa-check"></i> Responsive Website</li>
-                    <li><i class="fas fa-check"></i> Basic AI Integration</li>
-                    <li><i class="fas fa-check"></i> Cloud Hosting Setup</li>
-                    <li><i class="fas fa-check"></i> 3 Months Support</li>
-                    <li><i class="fas fa-check"></i> Analytics Dashboard</li>
-                </ul>
-                <a href="#contact" class="btn btn-secondary" style="width: 100%; text-align: center; margin-top: 2rem;">Get Started</a>
-            </div>
-
-            <div class="pricing-card featured">
-                <div class="pricing-badge">Most Popular</div>
-                <h3>Professional</h3>
-                <div class="pricing-price">$7,999<span>/project</span></div>
-                <p style="color: #9ca3af; margin-bottom: 2rem;">Ideal for growing businesses ready to scale with advanced AI features.</p>
-                <ul class="pricing-features">
-                    <li><i class="fas fa-check"></i> Everything in Starter</li>
-                    <li><i class="fas fa-check"></i> Mobile App Development</li>
-                    <li><i class="fas fa-check"></i> Advanced AI Models</li>
-                    <li><i class="fas fa-check"></i> Custom Integrations</li>
-                    <li><i class="fas fa-check"></i> 6 Months Support</li>
-                    <li><i class="fas fa-check"></i> Priority Support</li>
-                </ul>
-                <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center; margin-top: 2rem;">Get Started</a>
-            </div>
-
-            <div class="pricing-card">
-                <h3>Enterprise</h3>
-                <div class="pricing-price">Custom</div>
-                <p style="color: #9ca3af; margin-bottom: 2rem;">Tailored solutions for large organizations with complex requirements.</p>
-                <ul class="pricing-features">
-                    <li><i class="fas fa-check"></i> Everything in Professional</li>
-                    <li><i class="fas fa-check"></i> Dedicated Team</li>
-                    <li><i class="fas fa-check"></i> Custom AI Solutions</li>
-                    <li><i class="fas fa-check"></i> Enterprise Security</li>
-                    <li><i class="fas fa-check"></i> Unlimited Support</li>
-                    <li><i class="fas fa-check"></i> SLA Guarantee</li>
-                </ul>
-                <a href="#contact" class="btn btn-secondary" style="width: 100%; text-align: center; margin-top: 2rem;">Contact Sales</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section>
-        <div class="section-header">
-            <div class="section-badge">Testimonials</div>
-            <h2>Why Businesses Love Our AI Solutions</h2>
-            <p>Real results from real clients who've transformed their operations with WebenAI.</p>
-        </div>
-
-        <div class="testimonial-grid">
-            <div class="testimonial-card">
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <h3>Professional</h3>
+                    <div class="pricing-price">$7,999<span>/project</span></div>
+                    <p style="color: #9ca3af; margin-bottom: 2rem;">Ideal for growing businesses ready to scale with
+                        advanced AI features.</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Everything in Starter</li>
+                        <li><i class="fas fa-check"></i> Mobile App Development</li>
+                        <li><i class="fas fa-check"></i> Advanced AI Models</li>
+                        <li><i class="fas fa-check"></i> Custom Integrations</li>
+                        <li><i class="fas fa-check"></i> 6 Months Support</li>
+                        <li><i class="fas fa-check"></i> Priority Support</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary"
+                        style="width: 100%; text-align: center; margin-top: 2rem;">Get Started</a>
                 </div>
-                <p class="testimonial-text">"WebenAI transformed our customer service with their AI chatbot. We've seen a 60% reduction in response time and our customer satisfaction scores have never been higher. Absolutely incredible work!"</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">SM</div>
-                    <div class="author-info">
-                        <h4>Sarah Mitchell</h4>
-                        <p>CEO, TechVenture Inc.</p>
+
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="pricing-price">Custom</div>
+                    <p style="color: #9ca3af; margin-bottom: 2rem;">Tailored solutions for large organizations with
+                        complex requirements.</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Everything in Professional</li>
+                        <li><i class="fas fa-check"></i> Dedicated Team</li>
+                        <li><i class="fas fa-check"></i> Custom AI Solutions</li>
+                        <li><i class="fas fa-check"></i> Enterprise Security</li>
+                        <li><i class="fas fa-check"></i> Unlimited Support</li>
+                        <li><i class="fas fa-check"></i> SLA Guarantee</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary"
+                        style="width: 100%; text-align: center; margin-top: 2rem;">Contact Sales</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section>
+            <div class="section-header">
+                <div class="section-badge">Testimonials</div>
+                <h2>Why Businesses Love Our AI Solutions</h2>
+                <p>Real results from real clients who've transformed their operations with WebenAI.</p>
+            </div>
+
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"WebenAI transformed our customer service with their AI chatbot. We've
+                        seen a 60% reduction in response time and our customer satisfaction scores have never been
+                        higher. Absolutely incredible work!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SM</div>
+                        <div class="author-info">
+                            <h4>Sarah Mitchell</h4>
+                            <p>CEO, TechVenture Inc.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The mobile app they developed for us is phenomenal. The AI-powered
+                        recommendations have increased our sales by 45% and user engagement is through the roof. Best
+                        investment we've made!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JC</div>
+                        <div class="author-info">
+                            <h4>James Chen</h4>
+                            <p>Founder, RetailPro</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Working with WebenAI was seamless from start to finish. Their AI
+                        integration cut our processing time by 70% and the ROI was clear within the first quarter.
+                        Highly recommend their services!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">EP</div>
+                        <div class="author-info">
+                            <h4>Emily Parker</h4>
+                            <p>COO, FinanceHub</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Their predictive analytics solution has been a game-changer for our
+                        inventory management. We've reduced waste by 35% and improved forecasting accuracy dramatically.
+                        Exceptional team and support!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MR</div>
+                        <div class="author-info">
+                            <h4>Michael Rodriguez</h4>
+                            <p>Director, SupplyChain Pro</p>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="testimonial-card">
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+        <!-- FAQ Section -->
+        <section>
+            <div class="section-header">
+                <div class="section-badge">FAQ</div>
+                <h2>We've Got the Answers You're Looking For</h2>
+                <p>Common questions about our services, process, and AI solutions.</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What AI technologies do you specialize in?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        We specialize in machine learning, natural language processing, computer vision, predictive
+                        analytics, and custom AI model development. Our team works with leading frameworks including
+                        TensorFlow, PyTorch, and OpenAI technologies.
+                    </div>
                 </div>
-                <p class="testimonial-text">"The mobile app they developed for us is phenomenal. The AI-powered recommendations have increased our sales by 45% and user engagement is through the roof. Best investment we've made!"</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">JC</div>
-                    <div class="author-info">
-                        <h4>James Chen</h4>
-                        <p>Founder, RetailPro</p>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How long does a typical project take?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Project timelines vary based on complexity. A basic website with AI integration typically takes
+                        6-8 weeks, while comprehensive mobile apps and custom AI solutions can take 3-6 months. We
+                        provide detailed timelines during our discovery phase.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Do you provide ongoing support and maintenance?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes! All our packages include post-launch support. We offer maintenance plans ranging from 3
+                        months to unlimited enterprise support, including updates, monitoring, optimization, and 24/7
+                        technical assistance.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Can you integrate AI into our existing systems?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Absolutely! We specialize in seamless AI integration with existing platforms, CRMs, databases,
+                        and enterprise systems. Our team ensures minimal disruption to your current operations while
+                        maximizing the benefits of AI automation.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What kind of ROI can we expect from AI implementation?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Our clients typically see 30-40% efficiency gains within the first year, with cost reductions
+                        ranging from 25-50% depending on the use case. We provide detailed ROI projections during our
+                        consultation phase based on your specific business needs.
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="testimonial-card">
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+        <!-- CTA Section -->
+        <section class="cta-section" id="contact">
+            <div class="cta-content">
+                <h2>Let AI do the Work so you can Scale Faster</h2>
+                <p>Transform your business with intelligent automation that drives growth, reduces costs, and delights
+                    customers. Get started today and see results in weeks, not months.</p>
+                <div class="hero-buttons">
+                    <a href="mailto:info@webenai.com" class="btn btn-primary">Schedule a Consultation</a>
+                    <a href="https://webenai.com" class="btn btn-secondary">View Case Studies</a>
                 </div>
-                <p class="testimonial-text">"Working with WebenAI was seamless from start to finish. Their AI integration cut our processing time by 70% and the ROI was clear within the first quarter. Highly recommend their services!"</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">EP</div>
-                    <div class="author-info">
-                        <h4>Emily Parker</h4>
-                        <p>COO, FinanceHub</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>WebenAI</h3>
+                    <p>Intelligent automation solutions for modern businesses. We combine cutting-edge AI with
+                        exceptional development to deliver transformative results.</p>
+                    <p style="margin-top: 1rem;">
+                        <a href="mailto:info@webenai.com"
+                            style="color: #7c3aed; text-decoration: none;">info@webenai.com</a><br>
+                        <a href="https://webenai.com" style="color: #7c3aed; text-decoration: none;">webenai.com</a>
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>Solutions</h4>
+                    <div class="footer-links">
+                        <a href="#solutions">Web Development</a>
+                        <a href="#solutions">Mobile Apps</a>
+                        <a href="#solutions">AI & ML</a>
+                        <a href="#solutions">Cloud Solutions</a>
+                        <a href="#solutions">Consulting</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <div class="footer-links">
+                        <a href="#home">About Us</a>
+                        <a href="#process">Our Process</a>
+                        <a href="#pricing">Pricing</a>
+                        <a href="#contact">Contact</a>
+                        <a href="#">Blog</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Policy</a>
+                        <a href="#">Security</a>
                     </div>
                 </div>
             </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 WebenAI. All rights reserved. Built with intelligence and innovation.</p>
+            </div>
+        </footer>
 
-            <div class="testimonial-card">
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <p class="testimonial-text">"Their predictive analytics solution has been a game-changer for our inventory management. We've reduced waste by 35% and improved forecasting accuracy dramatically. Exceptional team and support!"</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">MR</div>
-                    <div class="author-info">
-                        <h4>Michael Rodriguez</h4>
-                        <p>Director, SupplyChain Pro</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <script>
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
 
-    <!-- FAQ Section -->
-    <section>
-        <div class="section-header">
-            <div class="section-badge">FAQ</div>
-            <h2>We've Got the Answers You're Looking For</h2>
-            <p>Common questions about our services, process, and AI solutions.</p>
-        </div>
+            // Scroll animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>What AI technologies do you specialize in?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    We specialize in machine learning, natural language processing, computer vision, predictive analytics, and custom AI model development. Our team works with leading frameworks including TensorFlow, PyTorch, and OpenAI technologies.
-                </div>
-            </div>
+            document.querySelectorAll('.process-card, .benefit-card, .pricing-card, .testimonial-card, .feature-large').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.8s ease';
+                observer.observe(el);
+            });
 
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>How long does a typical project take?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    Project timelines vary based on complexity. A basic website with AI integration typically takes 6-8 weeks, while comprehensive mobile apps and custom AI solutions can take 3-6 months. We provide detailed timelines during our discovery phase.
-                </div>
-            </div>
+            // FAQ Toggle
+            function toggleFAQ(element) {
+                const item = element.parentElement;
+                const wasActive = item.classList.contains('active');
 
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Do you provide ongoing support and maintenance?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    Yes! All our packages include post-launch support. We offer maintenance plans ranging from 3 months to unlimited enterprise support, including updates, monitoring, optimization, and 24/7 technical assistance.
-                </div>
-            </div>
+                document.querySelectorAll('.faq-item').forEach(faq => {
+                    faq.classList.remove('active');
+                });
 
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Can you integrate AI into our existing systems?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    Absolutely! We specialize in seamless AI integration with existing platforms, CRMs, databases, and enterprise systems. Our team ensures minimal disruption to your current operations while maximizing the benefits of AI automation.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>What kind of ROI can we expect from AI implementation?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    Our clients typically see 30-40% efficiency gains within the first year, with cost reductions ranging from 25-50% depending on the use case. We provide detailed ROI projections during our consultation phase based on your specific business needs.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section" id="contact">
-        <div class="cta-content">
-            <h2>Let AI do the Work so you can Scale Faster</h2>
-            <p>Transform your business with intelligent automation that drives growth, reduces costs, and delights customers. Get started today and see results in weeks, not months.</p>
-            <div class="hero-buttons">
-                <a href="mailto:info@webenai.com" class="btn btn-primary">Schedule a Consultation</a>
-                <a href="https://webenai.com" class="btn btn-secondary">View Case Studies</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <h3>WebenAI</h3>
-                <p>Intelligent automation solutions for modern businesses. We combine cutting-edge AI with exceptional development to deliver transformative results.</p>
-                <p style="margin-top: 1rem;">
-                    <a href="mailto:info@webenai.com" style="color: #7c3aed; text-decoration: none;">info@webenai.com</a><br>
-                    <a href="https://webenai.com" style="color: #7c3aed; text-decoration: none;">webenai.com</a>
-                </p>
-            </div>
-            <div class="footer-section">
-                <h4>Solutions</h4>
-                <div class="footer-links">
-                    <a href="#solutions">Web Development</a>
-                    <a href="#solutions">Mobile Apps</a>
-                    <a href="#solutions">AI & ML</a>
-                    <a href="#solutions">Cloud Solutions</a>
-                    <a href="#solutions">Consulting</a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h4>Company</h4>
-                <div class="footer-links">
-                    <a href="#home">About Us</a>
-                    <a href="#process">Our Process</a>
-                    <a href="#pricing">Pricing</a>
-                    <a href="#contact">Contact</a>
-                    <a href="#">Blog</a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h4>Legal</h4>
-                <div class="footer-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Cookie Policy</a>
-                    <a href="#">Security</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 WebenAI. All rights reserved. Built with intelligence and innovation.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (!wasActive) {
+                    item.classList.add('active');
                 }
-            });
-        });
+            }
 
-        // Scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+            // Add scroll effect to navigation
+            let lastScroll = 0;
+            window.addEventListener('scroll', () => {
+                const nav = document.querySelector('nav');
+                const currentScroll = window.pageYOffset;
+
+                if (currentScroll > 100) {
+                    nav.style.padding = '0.8rem 5%';
+                    nav.style.boxShadow = '0 4px 30px rgba(124, 58, 237, 0.1)';
+                } else {
+                    nav.style.padding = '1.2rem 5%';
+                    nav.style.boxShadow = 'none';
                 }
+
+                lastScroll = currentScroll;
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-        document.querySelectorAll('.process-card, .benefit-card, .pricing-card, .testimonial-card, .feature-large').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.8s ease';
-            observer.observe(el);
-        });
-
-        // FAQ Toggle
-        function toggleFAQ(element) {
-            const item = element.parentElement;
-            const wasActive = item.classList.contains('active');
-            
-            document.querySelectorAll('.faq-item').forEach(faq => {
-                faq.classList.remove('active');
-            });
-            
-            if (!wasActive) {
-                item.classList.add('active');
-            }
-        }
-
-        // Add scroll effect to navigation
-        let lastScroll = 0;
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
-                nav.style.padding = '0.8rem 5%';
-                nav.style.boxShadow = '0 4px 30px rgba(124, 58, 237, 0.1)';
-            } else {
-                nav.style.padding = '1.2rem 5%';
-                nav.style.boxShadow = 'none';
-            }
-            
-            lastScroll = currentScroll;
-        });
-    </script>
+        </script>
 </body>
+
 </html>
